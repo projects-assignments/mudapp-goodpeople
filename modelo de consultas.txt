@@ -1,0 +1,20 @@
+-- Registrar nuevo usuario:
+INSERT INTO user (name,lastname,address,userId,password) VALUES ("Jaume","Rodriguez","Carrer Independencia","jaumerz","hola321");
+
+-- Registrar nuevo proveedor:
+INSERT INTO provider (name,surname,address,vehicle,trip,reviews,user,password,availability,providerId) VALUES ("Factoria","F5","Bogatell","Berlingo","Barcelona","5/5","FactoriaF5","MixtaP8","Available","FactoriaF5")
+
+-- Registrar nuevo administrador:
+-- INSERT INTO admin (admin_id,password) VALUES ("ainafc","medaigual");
+
+-- Revisar si un proveedor está disponible y si el destino necesitado concuerda con sus preferencias:
+select * from provider where availability = "Available" and destination = "Barcelona";
+
+-- Ordenar proveedores de servicio según calificaciones:
+select * from provider order by reviews desc
+
+-- Crear nueva orden de servicio:
+-- INSERT INTO ticket (user_userId,provider_providerId,commodities,date_time,origin,destination,fare) VALUES ("mdvfz","FactoriaF5","Whole Room",20240112,"Bogatell","Sarria",120)
+
+-- Bloquear proveedor de servicio una vez que se haya creado nueva orden:
+UPDATE `mudapp`.`provider` SET `availability` = 'Not Available' WHERE (`providerId` = 'FactoriaF5');
